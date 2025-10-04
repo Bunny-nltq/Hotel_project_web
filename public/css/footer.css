@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  font-family: "SVN-New Baskerville", serif !important;
+  background: #f9f9f9;
+}
+
+/* Footer 1 */
+.main-footer {
+  background-color: #f3f3f1;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.footer-local h2 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #7c7c7c;
+  margin-bottom: 10px;
+}
+
+.footer-local h3 {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #7c7c7c;
+  letter-spacing: 1px;
+}
+
+.footer-local .address,
+.footer-local .phone,
+.footer-local .email {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #7c7c7c;
+}
+
+.footer-local .email a {
+  color: #7c7c7c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer-local .email a:hover {
+  color: #d8bdb4;
+}
+
+/* Footer 2 */
+.footer-section {
+  background-color: #e9e9e7;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  text-align: left;
+}
+
+.footer-info {
+  flex: 1;
+  max-width: 220px;
+  color: #7c7c7c;
+}
+
+.footer-info img {
+  max-width: 250px;
+  margin-bottom: 15px;
+}
+
+.footer-info p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.footer-info h2,
+.footer-menu h2,
+.footer-social h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #7c7c7c;
+}
+
+/* Menu */
+.footer-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-menu ul li {
+  margin-bottom: 10px;
+}
+
+.footer-menu ul li a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #7c7c7c;
+  transition: color 0.3s;
+}
+
+.footer-menu ul li a:hover {
+  color: #d8bdb4;
+}
+
+/* Social */
+.footer-social .icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-social .icons a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Icon màu thương hiệu */
+.facebook i { color: #1877F2; }
+.twitter i { color: #1DA1F2; }
+.instagram i { color: #E4405F; }
+.youtube i { color: #FF0000; }
+.pinterest i { color: #BD081C; }
+.linkedin i { color: #0A66C2; }
+
+/* Hover đổi nền */
+.footer-social .icons a:hover {
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+.footer-social .icons a.facebook:hover { background: #1877F2; }
+.footer-social .icons a.twitter:hover { background: #1DA1F2; }
+.footer-social .icons a.instagram:hover { background: #E4405F; }
+.footer-social .icons a.youtube:hover { background: #FF0000; }
+.footer-social .icons a.pinterest:hover { background: #BD081C; }
+.footer-social .icons a.linkedin:hover { background: #0A66C2; }
+
+.footer-social .icons a:hover i {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 30px;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

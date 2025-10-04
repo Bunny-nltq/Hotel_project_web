@@ -24,13 +24,14 @@ class RegisterController extends Controller
     {
         // Validate dữ liệu từ form
         $request->validate([
-            'fullname'          => 'required|string|max:255',
-            'phone'             => 'required|string|max:20|unique:users,phone',
-            'email'             => 'required|email|unique:users,email',
-            'password'          => 'required|string|min:6|confirmed',
-            'cccd_front'        => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            'cccd_back'         => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        ]);
+    'fullname'          => 'required|string|max:255',
+    'phone'             => 'required|string|max:20|unique:hotel_users,phone',
+    'email'             => 'required|email|unique:hotel_users,email',
+    'password'          => 'required|string|min:6|confirmed',
+    'cccd_front'        => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    'cccd_back'         => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+]);
+
 
         // Lưu file CCCD
         $cccdFrontPath = $request->file('cccd_front')->store('uploads/cccd', 'public');

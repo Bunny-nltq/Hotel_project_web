@@ -22,12 +22,17 @@ Route::view('/rooms', 'User.Pages.room')->name('rooms');
 Route::view('/contact', 'User.Pages.contact')->name('contact');
 
 // Auth pages (login / register)
-Route::view('/login', 'Auth.login')->name('login');
+// Đăng nhập
+Route::get('/login', [AuthController::class, 'showLogin'])->name('loginForm');
+Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
+
+// Đăng xuất
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 use App\Http\Controllers\Auth\RegisterController;
 
-Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 // If you have an escalation page in Auth folder

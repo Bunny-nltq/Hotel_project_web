@@ -10,6 +10,9 @@
 
   {{-- CSS --}}
   <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+  
+  <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
 </head>
 <body>
   <!-- Overlay -->
@@ -78,14 +81,19 @@
   <!-- Login Form -->
   <div class="login-form" id="loginForm">
     <span class="close-btn" onclick="closeAll()">&times;</span>
-    <h2>ĐĂNG NHẬP</h2>
+    <h2>
+      <a href="{{ asset('css/login.css') }}">
+        ĐĂNG NHẬP
+      </a>
+    </h2>
     <div class="form-row"><div style="flex:1">
       <label>Email</label><input type="email" placeholder="Nhập email"></div></div>
     <div class="form-row"><div style="flex:1">
       <label>Mật khẩu</label><input type="password" placeholder="Nhập mật khẩu"></div></div>
     <button>ĐĂNG NHẬP</button>
-    <p style="margin-top:10px; font-size:14px; color: #444">Chưa có tài khoản? <a href="{{route('register') }}">Đăng ký</a></p>
+    <p style="margin-top:10px; font-size:14px; color: #444">Chưa có tài khoản? <a href="{{route('register.form') }}">Đăng ký</a></p>
   </div>
+<script src="{{ asset('js/login.js') }}"></script>
 
   {{-- JS --}}
   <script src="{{ asset('js/header.js') }}"></script>

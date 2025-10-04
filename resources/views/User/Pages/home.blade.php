@@ -11,6 +11,8 @@
   {{-- CSS --}}
   <link rel="stylesheet" href="{{ asset('css/home.css') }}">
   
+  <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
 </head>
 <body>
 
@@ -141,6 +143,7 @@
 {{-- Footer JS --}}
 <script src="{{ asset('js/footer.js') }}"></script>
 
+<script src="{{ asset('js/login.js') }}"></script>
 
   {{-- JS --}}
   <script src="{{ asset('js/home.js') }}"></script>

@@ -1,61 +1,68 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Auth\HomeController;
+use App\Http\Controllers\Auth\BookingController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Đây là file routes/web.php — các route trả về view trực tiếp bằng Route::view
-| phù hợp cho trang tĩnh. Nếu cần logic (DB, controller) thì chuyển sang Route::get + Controller.
-|
 */
 
-// Home
-Route::view('/', 'User.Pages.home')->name('home');
-
-// User pages
+// ===== TRANG CHÍNH (ai cũng xem được) =====
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/about', 'User.Pages.aboutUs')->name('about');
 Route::view('/experience', 'User.Pages.experience')->name('experience');
 Route::view('/rooms', 'User.Pages.room')->name('rooms');
 Route::view('/contact', 'User.Pages.contact')->name('contact');
 
-// Auth pages (login / register)
-// Đăng nhập
-Route::get('/login', [AuthController::class, 'showLogin'])->name('loginForm');
-Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
+// ===== ĐĂNG NHẬP / ĐĂNG KÝ =====
+// Chỉ cho người CHƯA đăng nhập xem form
+Route::middleware('guest:hotel')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login.form');
+    Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
 
-// Đăng xuất
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+});
+
+// ===== ĐĂNG XUẤT =====
+Route::post('/logout', function () {
+    Auth::guard('hotel')->logout();
+    session()->invalidate();
+    session()->regenerateToken();
+    return redirect()->route('home')->with('success', 'Đã đăng xuất thành công!');
+})->name('logout');
+
+// ===== TRANG CẦN ĐĂNG NHẬP =====
+Route::middleware('auth:hotel')->group(function () {
+    Route::get('/user/info', [UserController::class, 'info'])->name('user.info');
+    Route::post('/customer/update', [UserController::class, 'updateInfo'])->name('user.updateInfo');
+    Route::post('/export/pdf', [UserController::class, 'exportPDF'])->name('user.exportPDF');
+});
 
 
-use App\Http\Controllers\Auth\RegisterController;
+Route::middleware('auth:hotel')->group(function () {
+    // Trang form đặt phòng
+    Route::get('/booking/{idRoom}', [BookingController::class, 'showForm'])->name('booking.form');
+    
+    // Gửi form đặt phòng
+    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+});
 
-Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register.form');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+// ===== ADMIN (chỉ khi đăng nhập mới truy cập được) =====
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::view('/', 'Admin.dashboard')->name('admin.dashboard');
+});
 
-// If you have an escalation page in Auth folder
-Route::view('/escalation', 'Auth.escalation')->name('escalation');
-
-// Section partials (nếu bạn muốn test header/footer trực tiếp)
+// ===== TEST PHẦN HEADER / FOOTER =====
 Route::view('/section/header', 'Section.header')->name('section.header');
 Route::view('/section/footer', 'Section.footer')->name('section.footer');
 
-// Admin area (thường bạn sẽ dùng middleware auth)
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-    // Nếu bạn có resources/views/Admin/dashboard.blade.php
-    Route::view('/', 'Admin.dashboard')->name('admin.dashboard');
-    // Thêm route admin khác ở đây...
-});
-
-/*
-| Nếu muốn trả về view kèm data tĩnh, có thể dùng closure:
-|
-| Route::get('/example', function () {
-|     return view('User.Pages.home', ['foo' => 'bar']);
-| })->name('example');
-|
-| Khi cần logic phức tạp hãy tạo Controller và dùng:
-| Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
-*/
+// ===== NẾU MUỐN XEM TRANG KHÁC (ESCLATION HOẶC KHẨN CẤP) =====
+Route::view('/escalation', 'Auth.escalation')->name('escalation');

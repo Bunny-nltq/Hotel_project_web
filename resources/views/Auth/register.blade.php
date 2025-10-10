@@ -16,7 +16,7 @@
   <section class="banner">
     <img src="{{ asset('img/The-Summit-Ariel-Evening-scaled.jpg') }}" alt="Banner" class="banner-img">
     <div class="banner-content">
-      <p>Dịch vụ & Tiện ích</p>
+      <p>Đăng ký thành viên</p>
       <h1>InterContinental Danang Sun Peninsula Resort</h1>
     </div>
   </section>
@@ -95,7 +95,7 @@
       {{-- Nút đăng ký --}}
       <button type="submit" class="submit-btn">ĐĂNG KÝ</button>
 
-      <p>Đã có tài khoản? <a href="{{ route('login') }}">Đăng nhập</a></p>
+      <p>Đã có tài khoản? <a href="{{ route('login.submit') }}">Đăng nhập</a></p>
     </form>
   </main>
 

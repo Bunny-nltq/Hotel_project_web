@@ -1,0 +1,178 @@
+body {
+      font-family: "SVN-New Baskerville", serif !important;
+      background-color: #fff;
+      color: #3d3935;
+      margin: 0;
+    }
+
+    /* Banner */
+.customer-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full màn hình */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* chữ xuống dưới */
+  text-align: center;
+  overflow: hidden;
+  color: white;
+  padding-bottom: 60px; /* cách mép dưới 60px */
+}
+
+
+.banner-img {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; /* hình cover full mà không méo */
+  z-index: 0;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+}
+
+.banner-title {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+    /* Container */
+    .customer-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    .form-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .form-description {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+    .row-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #3d3935;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #d8bdb4;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    input:disabled {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* CCCD */
+    .cccd-images {
+      display: flex;
+      gap: 20px;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cccd-images img {
+      max-width: 250px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .required {
+  color: red;
+  font-weight: bold;
+}
+
+
+    /* Booking history */
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      font-size: 14px;
+    }
+    .history-table th, .history-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    .history-table th {
+      background: #d8bdb4;
+      color: #3d3935;
+    }
+
+    .export-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.export-btn {
+  background-color: #d8bdb4;
+  color: #3d3935;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.export-btn:hover {
+  background-color: #c7a89d;
+  color: white;
+}
+
+.form-buttons {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.submit-button {
+  background-color: #d8bdb4;
+  color: #3d3935;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #c7a89d;
+  color: white;
+}

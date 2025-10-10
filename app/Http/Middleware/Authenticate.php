@@ -12,6 +12,16 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        if ($request->expectsJson()) {
+            return null;
+        }
+
+        // ✅ Kiểm tra nếu guard đang dùng là 'hotel'
+        if ($request->routeIs('hotel.*') || $request->is('hotel/*')) {
+            return route('login.form');
+        }
+
+        // ✅ Mặc định
+        return route('login.form');
     }
 }

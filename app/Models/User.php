@@ -5,22 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
-    protected $table = 'hotel_users'; // 👈 THÊM DÒNG NÀY
+    // 👉 Bảng trong database
+    protected $table = 'hotel_users';
 
-    protected $primaryKey = 'idUser'; // 👈 Vì khóa chính của bạn là idUser, không phải id
+    // 👉 Khóa chính thực tế
+    protected $primaryKey = 'idUser';
 
-    public $timestamps = true; // 👈 Có created_at và updated_at
+    // 👉 Nếu idUser là auto increment (INT) thì để true
+    public $incrementing = true;
+
+    // 👉 Kiểu dữ liệu của khóa chính
+    protected $keyType = 'int';
 
     protected $fillable = [
-        'fullname',
-        'email',
+        'fullName',
         'phone',
+        'email',
         'password',
         'cccd_front',
         'cccd_back',
@@ -29,9 +34,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-    ];
-
-    protected $casts = [
-        'password' => 'hashed',
     ];
 }

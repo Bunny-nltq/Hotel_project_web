@@ -22,11 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Demo – chỉ hiển thị alert
-        e.preventDefault();
-        alert("🎉 Đăng nhập thành công!");
-        setTimeout(() => {
-            window.location.href = "/";
-        }, 1500);
+        
     });
 });

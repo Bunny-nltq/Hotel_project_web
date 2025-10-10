@@ -1,68 +1,280 @@
-/* Reset */
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Georgia',serif;background:#f4f4f4;color:#333;line-height:1.5}
+/* ===== RESET CƠ BẢN ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Header */
-.header{
-  position:fixed;top:0;left:0;width:100%;height:70px;
-  display:flex;justify-content:center;align-items:center;
-  background:transparent;color:#fff;z-index:1000;transition:.4s
+body {
+  font-family: 'Georgia', serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.5;
 }
-.header.scrolled{background:#fff;color:#333;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.logo img{height:50px}
-.menu-left{position:absolute;left:20px;cursor:pointer;font-weight:bold;font-size:15px;color:inherit}
-.menu-right{position:absolute;right:20px;display:flex;gap:15px}
-.menu-right a{padding:8px 16px;border-radius:4px;text-decoration:none;color:inherit;font-size:14px;transition:.3s}
-.booking a{background:#d3b5a3;color:#3d3935}
-.login a{background:#dcdfdb;color:#3d3935}
-.menu-right a:hover{background:#fff;color:#d8bdb4}
 
-/* Overlay */
-.overlay{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,.6);
-  display:none;z-index:900;
+/* ===== HEADER CỐ ĐỊNH ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 0 40px;
+  color: #fff;
+  z-index: 1000;
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
-.overlay.active{display:block}
 
-/* Sidebar */
-.sidebar{
-  position:fixed;top:0;left:-280px;width:280px;height:100%;
-  background:#fff;padding:20px;
-  box-shadow:2px 0 10px rgba(0,0,0,.3);
-  transition:left .3s ease;z-index:1100;
+/* Header đổi màu khi cuộn xuống */
+.header.scrolled {
+  background: #fff;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-.sidebar.active{left:0}
-.sidebar .close-btn{position:absolute;top:15px;right:20px;font-size:22px;cursor:pointer}
-.sidebar a{display:block;padding:8px 0;text-decoration:none;color:#444}
-.sidebar a:hover{color:#b28b67}
-.sidebar .contact{margin-top:20px;font-size:14px; color:#444}
-.sidebar .social{margin-top:20px;display:flex;gap:12px}
-.sidebar .social a{font-size:20px;color:#444;transition:.2s}
-.sidebar .social a:hover{color:#b28b67}
 
-/* Forms */
-.booking-form,.login-form{
-  position:fixed;top:70px;right:-100%;width:90%;max-width:400px;
-  background:#fff;padding:30px;border-radius:4px 0 0 4px;
-  box-shadow:-4px 0 15px rgba(0,0,0,.2);
-  transition:right .4s ease;z-index:1200;
+/* ===== LOGO ===== */
+.logo img {
+  height: 50px;
 }
-.booking-form.active,.login-form.active{right:0}
-.booking-form h2,.login-form h2{margin-bottom:20px;font-size:20px; color: #444;}
-.form-row{display:flex;gap:15px;margin-bottom:15px;flex-wrap:wrap}
-.booking-form input,.booking-form select,.login-form input{
-  width:100%;padding:10px;border:1px solid #ccc
-}
-.booking-form button,.login-form button{
-  width:100%;padding:12px;background:#c8a997;color:#000;
-  border:none;cursor:pointer;font-weight:bold;transition:.3s
-}
-.booking-form button:hover,.login-form button:hover{background:#b08a77;color:#fff}
-.booking-form .close-btn,.login-form .close-btn{position:absolute;top:10px;right:15px;font-size:22px;cursor:pointer}
 
-/* Responsive */
-@media(max-width:768px){
-  .sidebar{width:240px}
-  .booking-form,.login-form{width:95%}
+/* ===== MENU BÊN PHẢI ===== */
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Nút mở sidebar (menu ☰) */
+.menu-toggle {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  color: inherit;
+}
+
+/* ===== NÚT AUTH (Đăng nhập / Đăng ký) ===== */
+.auth-buttons a,
+.user-menu a,
+.user-menu button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Màu cho nút khi chưa đăng nhập */
+.auth-buttons .btn-login {
+  background: #dcdfdb;
+  color: #3d3935;
+}
+
+.auth-buttons .btn-register {
+  background: #d3b5a3;
+  color: #3d3935;
+}
+
+/* Khi đã đăng nhập */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-menu span {
+  font-weight: bold;
+  color: inherit;
+}
+
+.btn-infor {
+  background: #d3b5a3;
+  color: #3d3935;
+  border: none;
+}
+
+.btn-logout {
+  background: #dcdfdb;
+  color: #3d3935;
+  border: none;
+}
+
+.auth-buttons a:hover,
+.btn-infor:hover,
+.btn-logout:hover {
+  background: #fff;
+  color: #b08a77;
+}
+
+/* ===== OVERLAY (mờ nền khi mở sidebar / form) ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 900;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* ===== SIDEBAR MENU ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%; /* CHUYỂN SANG BÊN PHẢI */
+  width: 280px;
+  height: 100%;
+  background: #fff;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease;
+  z-index: 1100;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px; /* Đặt nút đóng bên trái cho hợp lý */
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.sidebar h3 {
+  margin-top: 40px;
+  font-size: 18px;
+  color: #333;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #444;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #b28b67;
+}
+
+.sidebar .contact {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #444;
+}
+
+.sidebar .social {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.sidebar .social a {
+  font-size: 20px;
+  color: #444;
+  transition: 0.2s;
+}
+
+.sidebar .social a:hover {
+  color: #b28b67;
+}
+
+/* ===== FORM POPUP (đặt phòng / đăng nhập) ===== */
+.booking-form {
+  position: fixed;
+  top: 70px;
+  right: -100%;
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 4px 0 0 4px;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: right 0.4s ease;
+  z-index: 1200;
+}
+
+.booking-form.active {
+  right: 0;
+}
+
+.booking-form h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #444;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.booking-form button {
+  width: 100%;
+  padding: 12px;
+  background: #c8a997;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.booking-form button:hover {
+  background: #b08a77;
+  color: #fff;
+}
+
+.booking-form .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .menu-right {
+    gap: 10px;
+  }
+
+  .sidebar {
+    width: 240px;
+  }
+
+  .booking-form {
+    width: 95%;
+  }
+
+  .user-menu span {
+    display: none;
+  }
 }

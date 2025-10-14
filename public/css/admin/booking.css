@@ -1,0 +1,115 @@
+/* booking.css */
+
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form elements */
+.input-field {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #cbd5e1; /* màu xám nhạt */
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.2s;
+}
+
+/* Focus state */
+.input-field:focus {
+    border-color: #3b82f6; /* màu xanh dương */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Labels */
+label {
+    font-weight: 500;
+    color: #374151;
+    display: block;
+}
+
+/* Buttons */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6; /* màu xanh dương */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #2563eb; /* xanh đậm hơn khi hover */
+}
+
+/* Error messages */
+.text-red-500 {
+    color: #ef4444;
+    font-size: 14px;
+}
+.btn-add-room {
+    background-color: #10b981; /* màu xanh lá */
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+.btn-add-room:hover {
+    background-color: #059669;
+}
+
+.btn-edit {
+    background-color: #3b82f6;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.btn-edit:hover {
+    background-color: #2563eb;
+}
+
+.btn-delete {
+    background-color: #ef4444;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .btn-submit {
+        font-size: 14px;
+    }
+}

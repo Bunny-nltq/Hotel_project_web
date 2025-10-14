@@ -1,0 +1,112 @@
+/* ===== Tổng thể ===== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8fafc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Container chính ===== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ===== Tiêu đề ===== */
+h2 {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* ===== Thẻ thống kê ===== */
+.card {
+  background: #ffffff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h5 {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ===== Biểu đồ ===== */
+canvas {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+}
+
+/* ===== Nút xuất báo cáo ===== */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #16a34a;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #15803d;
+  transform: scale(1.05);
+}
+
+/* ===== Thanh điều hướng (nếu có thêm sidebar sau này) ===== */
+.admin-nav {
+  background-color: #1e293b;
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-nav a {
+  color: #f1f5f9;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.admin-nav a:hover {
+  color: #38bdf8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .col-md-3, .col-md-6 {
+    width: 100%;
+  }
+
+  canvas {
+    height: 250px;
+  }
+}

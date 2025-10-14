@@ -1,15 +1,24 @@
-public function up(): void
-{
-    Schema::table('users', function (Blueprint $table) {
-        $table->string('phone')->unique()->after('email');
-        $table->string('cccd_front')->nullable()->after('phone');
-        $table->string('cccd_back')->nullable()->after('cccd_front');
-    });
-}
+<?php
 
-public function down(): void
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
 {
-    Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn(['phone', 'cccd_front', 'cccd_back']);
-    });
-}
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('phone')->unique()->after('email');
+            $table->string('cccd_front')->nullable()->after('phone');
+            $table->string('cccd_back')->nullable()->after('cccd_front');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['phone', 'cccd_front', 'cccd_back']);
+        });
+    }
+};

@@ -54,7 +54,7 @@
     <span class="close-btn" onclick="closeAll()">&times;</span>
     <h3>Menu</h3>
     <a href="{{ route('home') }}">Trang chủ</a>
-    <a href="#">Phòng & Biệt thự</a>
+    <a href="{{ route('user.rooms') }}">Phòng & Biệt thự</a>
     <a href="#">Trải nghiệm</a>
     <a href="#">Về chúng tôi</a>
     <a href="#">Liên hệ</a>

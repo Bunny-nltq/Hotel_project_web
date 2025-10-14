@@ -1,0 +1,174 @@
+/* ===== RESET & LAYOUT ===== */
+body {
+  background: #121212;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.header, .footer {
+  flex-shrink: 0;
+}
+
+/* ===== BANNER ===== */
+.admin-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+.admin-banner::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.admin-banner-content {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #f8f8f8;
+  z-index: 2;
+}
+
+.admin-banner-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #e0b973; /* vàng đồng */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ===== MAIN FORM ===== */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 15px;
+}
+
+/* ===== LOGIN FORM ===== */
+.admin-login-form {
+  width: 100%;
+  max-width: 420px;
+  background: #1e1e1e;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.admin-login-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #e0b973;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.admin-form-row {
+  margin-bottom: 20px;
+}
+
+.admin-form-row label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.admin-form-row input {
+  width: 100%;
+  padding: 10px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.admin-form-row input:focus {
+  border-color: #e0b973;
+  outline: none;
+}
+
+/* ===== REMEMBER / CHECKBOX ===== */
+.admin-remember-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+}
+
+.admin-remember-row input[type="checkbox"] {
+  accent-color: #e0b973;
+}
+
+/* ===== BUTTON ===== */
+.admin-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #e0b973;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.admin-submit-btn:hover {
+  background: #cfa34a;
+}
+
+/* ===== LINK ===== */
+.admin-login-form p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.admin-login-form p a {
+  color: #e0b973;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.admin-login-form p a:hover {
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .admin-login-form {
+    padding: 25px;
+  }
+
+  .admin-banner-content h1 {
+    font-size: 24px;
+  }
+}

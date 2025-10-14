@@ -6,21 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    // 👉 Bảng trong database
+    // Bảng chung với User
     protected $table = 'hotel_users';
 
-    // 👉 Khóa chính thực tế
+    // Khóa chính
     protected $primaryKey = 'idUser';
 
-    // 👉 Nếu idUser là auto increment (INT) thì để true
     public $incrementing = true;
-
-    // 👉 Kiểu dữ liệu của khóa chính
     protected $keyType = 'int';
+
+    // Chỉ lấy các admin
+    protected static function booted()
+    {
+        static::addGlobalScope('onlyAdmins', function ($query) {
+            $query->where('role', 'admin');
+        });
+    }
 
     protected $fillable = [
         'fullName',
@@ -35,9 +40,4 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class, 'idUser', 'idUser');
-    }
 }
